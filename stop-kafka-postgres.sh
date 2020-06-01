@@ -2,7 +2,7 @@
 
 # Script per arrestare Kafka con Docker Compose
 
-echo Halting Kafka
+echo Halting Kafka and Postgres
 docker-compose down -v
 
 

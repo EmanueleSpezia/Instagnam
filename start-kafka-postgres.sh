@@ -2,7 +2,6 @@
 
 # Script per avviare Kafka con Docker Compose
 
-echo Starting Kafka...
+echo Starting Kafka and Postgres...
 
-# docker-compose up -d zookeeper kafka
 docker-compose up -d 
