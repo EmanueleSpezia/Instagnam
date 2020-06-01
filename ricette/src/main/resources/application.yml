@@ -17,7 +17,19 @@ spring:
         # consul deve restituire solo servizi che passano l'health check (default=false) 
         queryPassing: true 
     loadbalancer: 
-      ribbon.enabled: false 
+      ribbon.enabled: false  
+  kafka:
+    consumer:
+      bootstrap-servers: ${DOCKER_HOST_IP:10.11.1.121}:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer 
+asw:
+  instagnam:
+    producer:
+      name: RicetteService
+      channel:
+        out: asw.instagnam.channel.ricettaCreatedEvent 
+
 
 server: 
   port: ${PORT:${SERVER_PORT:0}}
