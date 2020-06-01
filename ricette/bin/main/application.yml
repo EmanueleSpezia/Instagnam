@@ -18,6 +18,22 @@ spring:
         queryPassing: true 
     loadbalancer: 
       ribbon.enabled: false 
+  kafka:
+    producer:
+      bootstrap-servers: ${DOCKER_HOST_IP:10.11.1.121}:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer 
+# POSTGRESQL
+  jpa:
+    database: POSTGRESQL
+# hibernate.ddl-auto=create
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://${DOCKER_HOST_IP:localhost}/ricette
+    username: postgres
+    password: postgres
 
 server: 
   port: ${PORT:${SERVER_PORT:0}}

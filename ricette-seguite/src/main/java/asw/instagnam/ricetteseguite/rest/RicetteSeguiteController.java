@@ -1,20 +1,15 @@
 package asw.instagnam.ricetteseguite.rest;
 
-import asw.instagnam.ricetteseguite.domain.*; 
+import java.util.Collection;
+import java.util.logging.Logger;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PathVariable; 
-import org.springframework.web.bind.annotation.RequestMethod; 
-import org.springframework.web.bind.annotation.RequestParam; 
-import org.springframework.web.bind.annotation.RequestBody; 
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.logging.Logger; 
-import java.util.*; 
+import asw.instagnam.ricetteseguite.domain.Ricetta;
+import asw.instagnam.ricetteseguite.domain.RicetteSeguiteService; 
 
 @RestController
 public class RicetteSeguiteController {
@@ -25,7 +20,7 @@ public class RicetteSeguiteController {
 	private RicetteSeguiteService ricetteSeguiteService;
 
 	/* Trova le ricette (in formato breve) degli utenti seguiti da utente. */ 
-	@GetMapping("/ricetteseguite/{utente}")
+	@GetMapping("/ricetteseguite/{utente}") 
 	public Collection<Ricetta> getRicetteSeguite(@PathVariable String utente) {
 		logger.info("REST CALL: getRicetteSeguite " + utente); 
 		Collection<Ricetta> ricette = ricetteSeguiteService.getRicetteSeguite(utente); 

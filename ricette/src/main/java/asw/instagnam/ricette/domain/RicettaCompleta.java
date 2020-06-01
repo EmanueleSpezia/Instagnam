@@ -1,8 +1,11 @@
 package asw.instagnam.ricette.domain;
 
-import javax.persistence.*; 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-import lombok.*; 
+import lombok.Data;
+import lombok.NoArgsConstructor; 
 
 /* Ricetta, in formato completo. */ 
 @Entity 
@@ -22,5 +25,26 @@ public class RicettaCompleta {
 		this.titolo = titolo; 
 		this.preparazione = preparazione; 
 	}
+
+	public RicettaCompleta() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getAutore() {
+		return autore;
+	}
+
+	public String getTitolo() {
+		return titolo;
+	}
+
+	public String getPreparazione() {
+		return preparazione;
+	}
+	
 	
 }

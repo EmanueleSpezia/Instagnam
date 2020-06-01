@@ -7,6 +7,11 @@ public class Connessione {
 
 	private Long id; 
 	private String follower; 
-	private String followed; 
+	private String followed;
+	
+	public String getFollowed() {
+		// TODO Auto-generated method stub
+		return null;
+	} 
 	
 }

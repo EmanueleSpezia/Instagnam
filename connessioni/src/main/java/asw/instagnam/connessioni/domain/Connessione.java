@@ -19,5 +19,9 @@ public class Connessione {
 		this.follower = follower; 
 		this.followed = followed; 
 	}
+
+	public Connessione() {
+		// TODO Auto-generated constructor stub
+	}
 	
 }

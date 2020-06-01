@@ -8,7 +8,15 @@ import lombok.*;
 public class CreateConnessioneRequest {
 
 	private String follower; 
-	private String followed; 
+	private String followed;
+	
+	public String getFollower() {
+		return follower;
+	}
+
+	public String getFollowed() {
+		return followed;
+	} 
 
 }
 

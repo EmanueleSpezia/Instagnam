@@ -1,33 +1,36 @@
 package asw.instagnam.ricette.rest;
 
-import asw.instagnam.ricette.domain.*;
-
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PathVariable; 
-import org.springframework.web.bind.annotation.RequestMethod; 
-import org.springframework.web.bind.annotation.RequestParam; 
-import org.springframework.web.bind.annotation.RequestBody; 
-import org.springframework.web.server.ResponseStatusException;
-import org.springframework.http.HttpStatus;
+import java.util.Collection;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
-import java.util.logging.Logger; 
-import java.util.*; 
-import java.util.stream.*; 
+import asw.instagnam.ricette.domain.Ricetta;
+import asw.instagnam.ricette.domain.RicettaCompleta;
+import asw.instagnam.ricette.domain.RicettePublisher;
+import asw.instagnam.ricette.domain.RicetteService; 
 
 @RestController
 public class RicetteController {
 
 	@Autowired 
 	private RicetteService ricetteService; 
+	
+	@Autowired
+	private RicettePublisher publisher;
 
 	private final Logger logger = Logger.getLogger(RicetteController.class.toString()); 
 
-	/* Crea un nuovo ristorante. 
+	/* Crea una nuova ricetta. 
 	* la richiesta contiene nel corpo autore e titolo */ 
 	@PostMapping("/ricette")
 	public RicettaCompleta createRicetta(@RequestBody CreateRicettaRequest request) {
@@ -36,6 +39,7 @@ public class RicetteController {
 		String preparazione = request.getPreparazione();
 		logger.info("REST CALL: createRicetta " + autore + ", " + titolo + ", " + preparazione); 
 		RicettaCompleta ricetta = ricetteService.createRicetta(autore, titolo, preparazione);
+		this.publisher.publish(new Ricetta(ricetta));
 		return ricetta; 
 	}	
 

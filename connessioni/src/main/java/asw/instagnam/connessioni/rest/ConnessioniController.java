@@ -22,7 +22,10 @@ import java.util.*;
 public class ConnessioniController {
 
 	@Autowired 
-	private ConnessioniService connessioniService; 
+	private ConnessioniService connessioniService;
+	
+	@Autowired
+	private ConnessioniPublisher publisher;
 
 	private final Logger logger = Logger.getLogger(ConnessioniController.class.toString()); 
 
@@ -34,6 +37,7 @@ public class ConnessioniController {
 		String followed = request.getFollowed();
 		logger.info("REST CALL: createConnessione " + follower + ", " + followed); 
 		Connessione connessione = connessioniService.createConnessione(follower, followed);
+		this.publisher.publish(connessione);
 		return connessione; 
 	}	
 

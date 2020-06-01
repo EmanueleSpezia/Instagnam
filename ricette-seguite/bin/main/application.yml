@@ -17,7 +17,25 @@ spring:
         # consul deve restituire solo servizi che passano l'health check (default=false) 
         queryPassing: true 
     loadbalancer: 
-      ribbon.enabled: false 
+      ribbon.enabled: false
+  kafka:
+    consumer:
+      bootstrap-servers: ${DOCKER_HOST_IP:10.11.1.121}:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: group_id
+      auto-offset-reset: earliest 
+# POSTGRESQL
+  jpa:
+    database: POSTGRESQL
+# hibernate.ddl-auto=create
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://${DOCKER_HOST_IP:localhost}/ricette-seguite
+    username: postgres
+    password: postgres
 
 server: 
   port: ${PORT:${SERVER_PORT:0}}
