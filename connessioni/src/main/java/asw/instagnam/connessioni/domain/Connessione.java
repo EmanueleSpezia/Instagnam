@@ -5,7 +5,7 @@ import javax.persistence.*;
 import lombok.*; 
 
 @Entity 
-@Data @NoArgsConstructor
+@Data 
 public class Connessione {
 
 	@Id 

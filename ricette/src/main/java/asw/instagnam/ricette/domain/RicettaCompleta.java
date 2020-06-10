@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 /* Ricetta, in formato completo. */ 
 @Entity 
-@Data @NoArgsConstructor
+@Data 
 public class RicettaCompleta {
 
 	@Id 

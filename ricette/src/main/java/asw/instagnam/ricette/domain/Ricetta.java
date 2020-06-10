@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor; 
 
 /* Ricetta, in formato breve. */ 
-@Data @NoArgsConstructor
+@Data 
 public class Ricetta {
 
 	private Long id; 
