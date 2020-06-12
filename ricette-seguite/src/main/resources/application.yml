@@ -5,7 +5,7 @@ spring:
     name: ricette-seguite
   cloud:
     consul:
-      host: localhost
+      host: consul
       port: 8500
       discovery: 
         instanceId: ${spring.application.name}-${spring.cloud.client.hostname}-${random.value}
@@ -28,14 +28,15 @@ spring:
 # POSTGRESQL
   jpa:
     database: POSTGRESQL
-# hibernate.ddl-auto=create
+# hibernate.ddl-auto=create-drop
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
   datasource:
     platform: postgres
-    url: jdbc:postgresql://postgres2:5433/ricetteseguite
+    url: jdbc:postgresql://postgres2:5430/ricetteseguite
     username: postgres
     password: postgres
+    driverClassName: org.postgresql.Driver
 
 server: 
    port: ${PORT:${SERVER_PORT:0}}

@@ -3,7 +3,7 @@
 #build del progetto
 
 echo Building project with gradle...
-gradle build 
+/opt/gradle/gradle-6.4.1/bin/gradle build 
 
 #start consul
 

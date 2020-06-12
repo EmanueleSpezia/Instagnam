@@ -1,8 +1,8 @@
 version: '3'
 services:
-  postgres0:
+  postgres:
     image: postgres
-    container_name: postgres0
+    container_name: postgres
     volumes:
       - "$PWD/postgres:/docker-entrypoint-initdb.d"
     expose: 
@@ -32,9 +32,9 @@ services:
     volumes:
       - "$PWD/postgres2:/docker-entrypoint-initdb.d"
     expose: 
-      - 5430
+      - 5433
     ports:
-      - "5430:5430"
+      - "5433:5433"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -55,30 +55,3 @@ services:
       KAFKA_CREATE_TOPICS: "asw.instagnam.channel.ricettaCreatedEvent:4:1,asw.instagnam.channel.connessioneCreatedEvent:4:1"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-  consul:
-    image: consul
-  ricette:
-    build: ./ricette
-    image: ricette-service
-    depends_on:
-      - consul
-      - postgres0
-  connessioni:
-    build: ./connessioni
-    image: connessioni-service
-    depends_on:
-      - consul
-      - postgres1
-  ricette-seguite:
-    build: ./ricette-seguite
-    image: ricette-seguite-service
-    depends_on:
-      - consul
-      - postgres2
-  apigateway:
-    build: ./api-gateway
-    image: api-gateway-service
-    ports:
-    - "8080:8080"
-    depends_on:
-      - consul
