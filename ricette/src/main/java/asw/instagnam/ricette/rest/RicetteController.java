@@ -60,6 +60,7 @@ public class RicetteController {
 	/* Trova tutte le ricette (in formato breve) (o tutte le ricette di autore). */ 
 	@GetMapping("/ricette")
 	public Collection<Ricetta> getRicette(@RequestParam(value="autore", required=false) String autore) {
+		System.out.println("entra");
 		Collection<RicettaCompleta> ricette = null; 
 		if (autore==null) {
 			logger.info("REST CALL: getRicette"); 

@@ -31,15 +31,14 @@ spring:
       ddl-auto: create-drop
   datasource:
     platform: postgres
-    url: jdbc:postgresql://${DOCKER_HOST_IP:localhost}/ricette
+    url: jdbc:postgresql://postgres:5431/ricette
     username: postgres
     password: postgres
-
 server: 
   port: ${PORT:${SERVER_PORT:0}}
-#  port: 8080
+# port: 8080
 
 # fa il logging dei comandi sql eseguiti 
-#spring.jpa.show-sql: true
+# spring.jpa.show-sql: true
 # disable OSIV
 spring.jpa.open-in-view: false

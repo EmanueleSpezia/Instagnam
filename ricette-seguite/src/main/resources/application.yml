@@ -33,10 +33,10 @@ spring:
       ddl-auto: create-drop
   datasource:
     platform: postgres
-    url: jdbc:postgresql://${DOCKER_HOST_IP:localhost}/ricette-seguite
+    url: jdbc:postgresql://postgres2:5433/ricetteseguite
     username: postgres
     password: postgres
 
 server: 
-  port: ${PORT:${SERVER_PORT:0}}
+   port: ${PORT:${SERVER_PORT:0}}
 #  port: 8080

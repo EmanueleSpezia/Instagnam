@@ -26,9 +26,11 @@ public class RicettaCompleta {
 		this.preparazione = preparazione; 
 	}
 
+
 	public RicettaCompleta() {
 		// TODO Auto-generated constructor stub
 	}
+
 
 	public Long getId() {
 		return id;

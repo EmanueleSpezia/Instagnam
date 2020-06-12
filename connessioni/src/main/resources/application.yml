@@ -31,12 +31,12 @@ spring:
       ddl-auto: create-drop
   datasource:
     platform: postgres
-    url: jdbc:postgresql://${DOCKER_HOST_IP:localhost}/connessioni
+    url: jdbc:postgresql://postgres1:5432/connessioni
     username: postgres
     password: postgres
 
 server: 
-  port: ${PORT:${SERVER_PORT:0}}
+   port: ${PORT:${SERVER_PORT:0}}
 #  port: 8080
 
 # fa il logging dei comandi sql eseguiti 
