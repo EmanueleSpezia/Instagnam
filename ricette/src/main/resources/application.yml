@@ -31,7 +31,7 @@ spring:
       ddl-auto: create
   datasource:
     platform: postgres
-    url: jdbc:postgresql://postgres0:5431/ricette
+    url: jdbc:postgresql://postgres0:5432/ricette
     username: postgres
     password: postgres
     driverClassName: org.postgresql.Driver
