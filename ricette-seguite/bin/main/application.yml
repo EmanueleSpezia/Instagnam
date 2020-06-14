@@ -20,7 +20,7 @@ spring:
       ribbon.enabled: false
   kafka:
     consumer:
-      bootstrap-servers: ${DOCKER_HOST_IP:10.11.1.121}:9092
+      bootstrap-servers: kafka:9092
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       group-id: group_id
@@ -33,7 +33,7 @@ spring:
       ddl-auto: create
   datasource:
     platform: postgres
-    url: jdbc:postgresql://postgres2:5430/ricetteseguite
+    url: jdbc:postgresql://postgres2:5432/ricetteseguite
     username: postgres
     password: postgres
     driverClassName: org.postgresql.Driver

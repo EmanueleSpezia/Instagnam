@@ -4,16 +4,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+
+import asw.instagnam.ricetteseguite.domain.DomainEvent;
 import asw.instagnam.ricetteseguite.domain.RicetteSeguiteEventConsumer;
 @Component
 public class RicetteSeguiteEventListener {
-	 @Autowired
+		static final String KAFKACHANNELRICETTE = "asw.instagnam.channel.ricettaCreatedEvent";
+		static final String KAFKACHANNELCONNESSIONI = "asw.instagnam.channel.connessioneCreatedEvent";
+	
+	 	@Autowired
 	    private RicetteSeguiteEventConsumer ricetteSeguiteEventConsumer;
 
-		@KafkaListener(topics = {"asw.instagnam.channel.ricettaCreatedEvent","asw.instagnam.channel.connessioneCreatedEvent"})
-	    public void listen(ConsumerRecord<String, Object> record) throws Exception {
-	        Object event = record.value(); //TODO questo deve essere cambiato
+		@KafkaListener(topics = KAFKACHANNELRICETTE)
+	    public void listenRicette(ConsumerRecord<String, DomainEvent> record) throws Exception {
+	        DomainEvent event = record.value();  
 			ricetteSeguiteEventConsumer.onEvent(event); 
 	    }
+		
+		@KafkaListener(topics = KAFKACHANNELCONNESSIONI)
+	    public void listenConnessioni(ConsumerRecord<String, DomainEvent> record) throws Exception {
+	        DomainEvent event = record.value(); 
+			ricetteSeguiteEventConsumer.onEvent(event); 
+	    }
+
 
 }

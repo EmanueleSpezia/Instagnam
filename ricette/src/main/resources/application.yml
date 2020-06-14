@@ -20,7 +20,7 @@ spring:
       ribbon.enabled: false 
   kafka:
     producer:
-      bootstrap-servers: ${DOCKER_HOST_IP:10.11.1.121}:9092
+      bootstrap-servers: kafka:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer 
 # POSTGRESQL
