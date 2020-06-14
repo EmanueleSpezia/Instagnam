@@ -22,13 +22,14 @@ spring:
     producer:
       bootstrap-servers: kafka:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer 
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer 
 # POSTGRESQL
   jpa:
     database: POSTGRESQL
+    show-sql: true
 # hibernate.ddl-auto=create-drop
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
   datasource:
     platform: postgres
     url: jdbc:postgresql://postgres0:5432/ricette

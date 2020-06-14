@@ -24,7 +24,7 @@ spring:
     consumer:
       bootstrap-servers: kafka:9092
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       group-id: group_id
       auto-offset-reset: earliest 
       properties:
@@ -36,9 +36,10 @@ spring:
 # POSTGRESQL
   jpa:
     database: POSTGRESQL
+    show-sql: true
 # hibernate.ddl-auto=create-drop
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
   datasource:
     platform: postgres
     url: jdbc:postgresql://postgres2:5432/ricetteseguite

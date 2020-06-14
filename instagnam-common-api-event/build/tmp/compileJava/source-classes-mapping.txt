@@ -1,2 +1,6 @@
-asw/efood/common/api/event/DomainEvent.java
+asw/instagnam/common/api/event/DomainConnessioni.java
+ asw.instagnam.common.api.event.DomainConnessioni
+asw/instagnam/common/api/event/DomainEvent.java
  asw.instagnam.common.api.event.DomainEvent
+asw/instagnam/common/api/event/DomainRicette.java
+ asw.instagnam.common.api.event.DomainRicette
