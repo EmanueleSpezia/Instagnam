@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import lombok.*; 
+import asw.instagnam.common.api.event.DomainEvent;
 
 @Entity 
 @Data

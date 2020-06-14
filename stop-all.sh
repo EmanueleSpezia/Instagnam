@@ -1,14 +1,14 @@
 #!/bin/bash
 
-echo Halting all running java processes  
+#echo Halting all running java processes  
 
-pkill -f 'java'
+#pkill -f 'java'
 
-echo Halting Consul  
+#echo Halting Consul  
 
-docker stop asw-consul 
-docker rm asw-consul 
+#docker stop asw-consul 
+#docker rm asw-consul 
 
-echo Halting Kafka and Postgres
+echo Halting containers
 
 docker-compose down -v

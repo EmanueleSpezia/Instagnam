@@ -19,12 +19,20 @@ spring:
     loadbalancer: 
       ribbon.enabled: false
   kafka:
+    #listener:
+      #missing-topics-fatal: false
     consumer:
       bootstrap-servers: kafka:9092
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       group-id: group_id
       auto-offset-reset: earliest 
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: '*'
+              
 # POSTGRESQL
   jpa:
     database: POSTGRESQL

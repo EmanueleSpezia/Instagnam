@@ -6,17 +6,17 @@ import org.springframework.stereotype.Service;
 
 import asw.instagnam.connessioni.domain.Connessione;
 import asw.instagnam.connessioni.domain.ConnessioniPublisher;
+import asw.instagnam.common.api.event.DomainEvent;
 
 @Service
 public class ConnessioniPublisherImpl implements ConnessioniPublisher{
 	
-	private String channel = "asw.instagnam.channel.ricettaCreatedEvent";
+	private String channel = "connessioneCreatedEvent";
 	@Autowired
-	private KafkaTemplate<String, Connessione> template;
-	
+	private KafkaTemplate<String, DomainEvent> template;
 	
 	@Override
-	public void publish(Connessione message) {
+	public void publish(DomainEvent message) {
 		this.template.send(this.channel,message);
 	}
  

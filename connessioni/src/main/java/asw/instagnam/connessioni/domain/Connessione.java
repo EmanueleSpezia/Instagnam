@@ -1,12 +1,14 @@
 package asw.instagnam.connessioni.domain;
 
+import asw.instagnam.common.api.event.DomainEvent;
+
 import javax.persistence.*; 
 
 import lombok.*; 
 
 @Entity 
 @Data 
-public class Connessione {
+public class Connessione implements DomainEvent {
 
 	@Id 
 	@GeneratedValue

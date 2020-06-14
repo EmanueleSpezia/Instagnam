@@ -1,0 +1,2 @@
+asw/efood/common/api/event/DomainEvent.java
+ asw.instagnam.common.api.event.DomainEvent

@@ -4,13 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import asw.instagnam.common.api.event.DomainEvent;
 
-import asw.instagnam.ricetteseguite.domain.DomainEvent;
 import asw.instagnam.ricetteseguite.domain.RicetteSeguiteEventConsumer;
 @Component
 public class RicetteSeguiteEventListener {
-		static final String KAFKACHANNELRICETTE = "asw.instagnam.channel.ricettaCreatedEvent";
-		static final String KAFKACHANNELCONNESSIONI = "asw.instagnam.channel.connessioneCreatedEvent";
+		static final String KAFKACHANNELRICETTE = "ricettaCreatedEvent";
+		static final String KAFKACHANNELCONNESSIONI = "connessioneCreatedEvent";
 	
 	 	@Autowired
 	    private RicetteSeguiteEventConsumer ricetteSeguiteEventConsumer;

@@ -1,11 +1,12 @@
 package asw.instagnam.ricette.domain;
 
+import asw.instagnam.common.api.event.DomainEvent;
 import lombok.Data;
 import lombok.NoArgsConstructor; 
 
 /* Ricetta, in formato breve. */ 
 @Data 
-public class Ricetta {
+public class Ricetta implements DomainEvent {
 
 	private Long id; 
 	private String autore; 

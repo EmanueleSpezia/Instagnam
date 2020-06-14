@@ -2,6 +2,7 @@ package asw.instagnam.ricetteseguite.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import asw.instagnam.common.api.event.DomainEvent;
 
 import lombok.*; 
 
