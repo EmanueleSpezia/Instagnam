@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 @Service 
 public class RicetteSeguiteService {
 
-	private final Logger logger = Logger.getLogger(RicetteSeguiteController.class.toString()); 
+
 	@Autowired
 	private RicetteService ricetteService;
 	
@@ -24,13 +24,9 @@ public class RicetteSeguiteService {
 		Collection<Ricetta> ricette = new ArrayList<>(); 
 		Collection<Connessione> connessioni = this.connessioniService.getConnessioniByFollower(utente); 
 		for (Connessione connessione : connessioni) {
-			logger.info("dentro for stampa connessione:" + connessione);
 			String followed = connessione.getFollowed();
-			logger.info("dentro for stampa followed:" + followed);
 			Collection<Ricetta> ricetteByFollowed = this.ricetteService.getRicetteByAutore(followed);
-			logger.info("dentro for stampa ricettebyfollowed:" + ricetteByFollowed);
 			ricette.addAll(ricetteByFollowed);
-			logger.info("dentro for stampa ricette:" + ricette);
 		}
 		return ricette; 
 	}
