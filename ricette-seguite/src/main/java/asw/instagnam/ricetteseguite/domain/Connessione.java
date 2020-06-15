@@ -9,16 +9,13 @@ import asw.instagnam.common.api.event.DomainEvent;
 @Entity 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Connessione implements DomainEvent {
 
 	@Id
 	private Long id; 
 	private String follower; 
 	private String followed;
-	
-	public String getFollowed() {
-		// TODO Auto-generated method stub
-		return null;
-	} 
+
 	
 }

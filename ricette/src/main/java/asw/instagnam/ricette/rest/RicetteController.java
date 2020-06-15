@@ -25,8 +25,6 @@ public class RicetteController {
 	@Autowired 
 	private RicetteService ricetteService; 
 	
-	@Autowired
-	private RicettePublisher publisher;
 
 	private final Logger logger = Logger.getLogger(RicetteController.class.toString()); 
 
@@ -39,7 +37,6 @@ public class RicetteController {
 		String preparazione = request.getPreparazione();
 		logger.info("REST CALL: createRicetta " + autore + ", " + titolo + ", " + preparazione); 
 		RicettaCompleta ricetta = ricetteService.createRicetta(autore, titolo, preparazione);
-		this.publisher.publish(new Ricetta(ricetta));
 		return ricetta; 
 	}	
 

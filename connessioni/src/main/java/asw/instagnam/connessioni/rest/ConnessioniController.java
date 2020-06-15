@@ -3,11 +3,9 @@ package asw.instagnam.connessioni.rest;
 import asw.instagnam.connessioni.domain.*;
 
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable; 
-import org.springframework.web.bind.annotation.RequestMethod; 
 import org.springframework.web.bind.annotation.RequestParam; 
 import org.springframework.web.bind.annotation.RequestBody; 
 import org.springframework.web.server.ResponseStatusException;
@@ -24,8 +22,6 @@ public class ConnessioniController {
 	@Autowired 
 	private ConnessioniService connessioniService;
 	
-	@Autowired
-	private ConnessioniPublisher publisher;
 
 	private final Logger logger = Logger.getLogger(ConnessioniController.class.toString()); 
 
@@ -37,7 +33,6 @@ public class ConnessioniController {
 		String followed = request.getFollowed();
 		logger.info("REST CALL: createConnessione " + follower + ", " + followed); 
 		Connessione connessione = connessioniService.createConnessione(follower, followed);
-		this.publisher.publish(connessione);
 		return connessione; 
 	}	
 
