@@ -3,7 +3,7 @@
 Progetto del corso di Analisi e progettazione del software per l'anno accademico 2019-2020. 
 
 
-## Descrizione di questo progetto 
+## Descrizione progetto INSTAGNAM
 
 Questo progetto contiene il il codice di *Instagnam*, un semplice social-network per la condivisione di ricette di cucina. 
 Gli utenti del sistema possono pubblicare delle ricette. 
@@ -49,15 +49,13 @@ per trovare le ricette seguite dall'utente U, è basata su invocazioni remote RE
 
 Per eseguire questo progetto: 
 
-* avviare *Consul* eseguendo lo script `start-consul.sh` 
-
 * per avviare l'applicazione *Instagnam*, eseguire lo script `run-instagnam.sh` 
 
-Alla fine, l'applicazione può essere arrestata usando lo script `stop-java-processes.sh` (**da usare con cautela!**). 
-
-Inoltre, *Consul* può essere arrestato con lo script `stop-consul.sh`. 
+Alla fine, l'applicazione può essere arrestata usando lo script `stop-instagnam.sh` 
 
 
-## Descrizione delle attività da svolgere 
+## Commenti
 
-Si veda il sito web del corso di [Architettura dei sistemi software](http://cabibbo.dia.uniroma3.it/asw/).
+* I servizi ricette e connessioni usano una propria base di dati PostegreSQL
+* La logica del servizio *ricette-seguite* è stata invertita
+* Attraverso Docker compose è stato possibile avviare servizi e datatbase in contenitori docker separati
