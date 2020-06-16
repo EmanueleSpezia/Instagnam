@@ -58,4 +58,5 @@ Alla fine, l'applicazione può essere arrestata usando lo script `stop-instagnam
 
 * I servizi ricette e connessioni usano una propria base di dati PostegreSQL
 * La logica del servizio *ricette-seguite* è stata invertita
+* Implementata variante più complessa
 * Attraverso Docker compose è possibile avviare servizi e datatbase in contenitori docker separati
