@@ -42,5 +42,10 @@ public class ConnessioniService {
 		Collection<Connessione> connessioni = connessioniRepository.findAllByFollower(follower);
 		return connessioni;
 	}
+	
+	public Collection<Connessione> getConnessioniByFollowed(String followed) {
+		Collection<Connessione> connessioni = connessioniRepository.findAllByFollowed(followed);
+		return connessioni;
+	}
 
 }

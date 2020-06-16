@@ -12,6 +12,7 @@ import asw.instagnam.common.api.event.DomainEvent;
 import asw.instagnam.ricetteseguite.domain.Connessione;
 import asw.instagnam.ricetteseguite.domain.Ricetta;
 import asw.instagnam.ricetteseguite.domain.RicetteSeguiteEventConsumer;
+
 @Component
 public class RicetteSeguiteEventListener {
 		static final String KAFKACHANNELRICETTE = "ricettaCreatedEvent";

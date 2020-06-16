@@ -10,8 +10,5 @@ public interface RicetteSeguiteRepository extends CrudRepository<Ricetta, Long> 
 	
 	public Collection<Ricetta> findAll();
 
-	@Query("SELECT r " +
-			"FROM Ricetta r " + 
-			"WHERE r.autore=:autore")
-	public Collection<Ricetta> findAllByAutore(@Param("autore")String autore);
+	public Collection<Ricetta> findAllByAutore(String autore);
 }

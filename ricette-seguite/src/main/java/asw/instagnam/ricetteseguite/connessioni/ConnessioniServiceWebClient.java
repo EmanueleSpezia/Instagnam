@@ -40,6 +40,27 @@ public class ConnessioniServiceWebClient implements ConnessioniService {
             e.printStackTrace();
         }
 		return connessioni; 
+	}
+
+	
+	public Collection<Connessione> getConnessioniByFollowed(String followed) {
+		Collection<Connessione> connessioni = null; 
+        Flux<Connessione> response = loadBalancedWebClient
+                .get()
+				.uri(uriBuilder -> uriBuilder 
+					.scheme("http")
+					.host("connessioni")
+					.path("/connessioni")
+					.queryParam("followed", followed)
+					.build())
+                .retrieve()
+                .bodyToFlux(Connessione.class);
+        try {
+            connessioni = response.collectList().block();
+        } catch (WebClientException e) {
+            e.printStackTrace();
+        }
+		return connessioni; 
 	}	
 
 }

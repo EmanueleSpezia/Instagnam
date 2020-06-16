@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-
 import asw.instagnam.ricette.domain.Ricetta;
 import asw.instagnam.ricette.domain.RicettaCompleta;
 import asw.instagnam.ricette.domain.RicettePublisher;
+import asw.instagnam.ricette.domain.RicetteRepository;
 import asw.instagnam.ricette.domain.RicetteService; 
 
 @RestController
@@ -24,20 +24,33 @@ public class RicetteController {
 
 	@Autowired 
 	private RicetteService ricetteService; 
-	
+
+	@Autowired 
+	private RicetteRepository ricetteRepository;
+
 
 	private final Logger logger = Logger.getLogger(RicetteController.class.toString()); 
 
 	/* Crea una nuova ricetta. 
-	* la richiesta contiene nel corpo autore e titolo */ 
+	 * la richiesta contiene nel corpo autore e titolo */ 
 	@PostMapping("/ricette")
 	public RicettaCompleta createRicetta(@RequestBody CreateRicettaRequest request) {
+		RicettaCompleta  ricettaCompleta = null;
 		String autore = request.getAutore();
 		String titolo = request.getTitolo();
 		String preparazione = request.getPreparazione();
-		logger.info("REST CALL: createRicetta " + autore + ", " + titolo + ", " + preparazione); 
-		RicettaCompleta ricetta = ricetteService.createRicetta(autore, titolo, preparazione);
-		return ricetta; 
+		Collection<RicettaCompleta> ricette = ricetteRepository.findAll();
+		int test = 0;
+		for (RicettaCompleta ricCompl : ricette) {
+			if (autore.equals(ricCompl.getAutore()) && titolo.equals(ricCompl.getTitolo()) && preparazione.equals(ricCompl.getPreparazione())) {
+				test = test+1;
+			}
+		}
+		if (test == 0) {
+			logger.info("REST CALL: createRicetta " + autore + ", " + titolo + ", " + preparazione); 
+			ricettaCompleta = ricetteService.createRicetta(autore, titolo, preparazione);
+		}
+		return ricettaCompleta; 
 	}	
 
 	/* Trova la ricetta con ricettaId. */ 
@@ -49,8 +62,8 @@ public class RicetteController {
 			return ricetta;
 		} else {
 			throw new ResponseStatusException(
-				HttpStatus.NOT_FOUND, "Ricetta not found"
-			);
+					HttpStatus.NOT_FOUND, "Ricetta not found"
+					);
 		}
 	}
 
@@ -68,11 +81,11 @@ public class RicetteController {
 		}
 		return toRicetteBrevi(ricette);
 	}
-	
+
 	/* Converte una collezione di ricette (in formato completo), in una collezione di ricette (in formato breve). */ 
 	private Collection<Ricetta> toRicetteBrevi(Collection<RicettaCompleta> ricetteComplete) {
 		Collection<Ricetta> ricette = 
-			ricetteComplete
+				ricetteComplete
 				.stream()
 				.map(r -> new Ricetta(r))
 				.collect(Collectors.toList());
